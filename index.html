@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amber Joy Layne | The Dancing Comedian</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Königsberg&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Königsberg', sans-serif;
+        }
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6DE1D2 0%, #FFD63A 50%, #FFA955 75%, #F75A5A 100%);
+        }
+        .section-gradient {
+            background: linear-gradient(135deg, rgba(109, 225, 210, 0.1) 0%, rgba(255, 214, 58, 0.1) 50%, rgba(255, 169, 85, 0.1) 75%, rgba(247, 90, 90, 0.1) 100%);
+        }
+        .nav-link:hover {
+            color: #F75A5A;
+        }
+        .role-text {
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        @media (max-width: 768px) {
+            .role-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-2xl font-bold playfair text-gray-800">Amber Joy Layne</div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-800 hover:text-gray-600 hover:border-b-2 hover:border-black transition-all duration-300 pb-1">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-gray-600 hover:border-b-2 hover:border-black transition-all duration-300 pb-1">About</a>
+                <a href="#gallery" class="nav-link text-gray-800 hover:text-gray-600 hover:border-b-2 hover:border-black transition-all duration-300 pb-1">Gallery</a>
+                <a href="#services" class="nav-link text-gray-800 hover:text-gray-600 hover:border-b-2 hover:border-black transition-all duration-300 pb-1">Service</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-gray-600 hover:border-b-2 hover:border-black transition-all duration-300 pb-1">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <!-- Hamburger Icon -->
+                    <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <!-- Close Icon -->
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#home" class="block text-gray-800 hover:text-pink-500 transition-colors py-2 text-center font-medium">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Home
+                    </span>
+                </a>
+                <a href="#about" class="block text-gray-800 hover:text-pink-500 transition-colors py-2 text-center font-medium">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        About
+                    </span>
+                </a>
+                <a href="#gallery" class="block text-gray-800 hover:text-pink-500 transition-colors py-2 text-center font-medium">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Gallery
+                    </span>
+                </a>
+                <a href="#services" class="block text-gray-800 hover:text-pink-500 transition-colors py-2 text-center font-medium">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z"></path>
+                        </svg>
+                        Service
+                    </span>
+                </a>
+                <a href="#contact" class="block text-gray-800 hover:text-pink-500 transition-colors py-2 text-center font-medium">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Contact
+                    </span>
+                </a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Video Background -->
+        <video 
+            id="hero-video" 
+            class="absolute top-0 left-0 w-full h-full object-cover z-0" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            preload="auto"
+            poster="Images/about.png">
+            <source src="Images/2vid.mp4" type="video/mp4">
+            <source src="Videos/hero-background.webm" type="video/webm">
+            <!-- Fallback for browsers that don't support video -->
+            <div class="absolute top-0 left-0 w-full h-full gradient-bg"></div>
+        </video>
+        
+        <!-- Video Overlay for better text readability -->
+        <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
+        
+        <!-- Content -->
+        <div class="container mx-auto px-6 text-center relative z-20">
+            <h1 class="text-4xl md:text-8xl font-bold mb-6 playfair text-white drop-shadow-2xl">Amber Joy Layne</h1>
+            <div class="role-text mb-12">
+                <span class="font-bold text-white drop-shadow-lg"> The Dancing Comedian</span> 
+            </div>
+            <div class="flex justify-center space-x-4">
+                <a href="#contact" class="bg-white text-gray-800 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Work With Me</a>
+                <a href="#gallery" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-gray-800 transition shadow-lg backdrop-blur-sm">View Work</a>
+            </div>
+        </div>
+        
+        <!-- Video Controls (Optional) -->
+       
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-teal-50 via-yellow-50 to-orange-50 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-8">
+                <h2 class="text-5xl font-bold mb-6 playfair text-black">About Amber</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-orange-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image Section -->
+                <div class="lg:w-1/2">
+                    <div class="relative group">
+                        <!-- Decorative border -->
+                        <div class="absolute -inset-4 bg-gradient-to-r from-teal-400 via-yellow-400 to-orange-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative">
+                            <img src="Images/about.png" alt="Amber Joy Layne" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-105 transition duration-300">
+                            <!-- Overlay with quote -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                                <div class="p-6 text-white">
+                                    <p class="text-lg font-medium italic">"Spreading joy through every performance"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Section -->
+                <div class="lg:w-1/2 space-y-8">
+                    
+                    <div class=" backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/50">
+                        <h3 class="text-4xl font-bold mb-6 playfair bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent text-center">Amber Joy Layne</h3>
+                        <p class="text-justify text-lg leading-relaxed text-gray-700 mb-6">
+                            I was branded at birth with a middle name that came with a mission: <span class="font-bold text-yellow-600">Joy</span>. Ever since, I've been finding every way to share it — dancing on stage, making people laugh in clubs, or producing videos that reach farther than these giant calves could ever take me.
+                        </p>
+                        
+                        <!-- Mission Statement -->
+                        <div class="bg-gradient-to-r from-teal-100 to-orange-100 p-6 rounded-xl border-l-4 border-gradient-to-b from-teal-400 to-orange-400">
+                            <h4 class="font-bold text-lg mb-2 text-gray-800">My Mission</h4>
+                            <p class="text-gray-700 italic">To bring authentic joy and laughter to every audience, creating moments that connect hearts and lift spirits through the power of performance.</p>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comedian/Host Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl text-black font-bold mb-12 text-center playfair">Comedian & Host</h2>
+            <div class="container mx-auto px-6 relative z-10">
+            
+            <!-- Centered Image Section -->
+
+           
+            <div class="flex justify-center mb-0">
+                <div class="max-w-md">
+                    <div class="relative group">
+                        <!-- Decorative border -->
+                        <div class="absolute -inset-4 bg-gradient-to-r from-teal-400 via-yellow-400 to-orange-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative">
+                            <img src="Images/bio.png" alt="Amber Joy Layne" class="rounded-2xl shadow-2xl w-full h-full transform group-hover:scale-105 transition duration-300">
+                            <!-- Overlay with quote -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                                <div class="p-6 text-white">
+                                    <p class="text-lg font-medium italic">"The Dancing Comedian"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bio Note Section -->
+            <div class="max-w-4xl mx-auto mb-2">
+                <div class="p-4 md:p-10 rounded-3xl ">
+                    <!-- Bio Note Card -->
+                    <div class="bg-gradient-to-br from-teal-50 to-orange-50 p-4 md:p-8 rounded-2xl border-2 border-gradient-to-r from-teal-200 to-orange-200 mb-8">
+                        <h4 class="text-xl md:text-2xl font-bold mb-4 text-center playfair text-gray-800">📝 Bio Note</h4>
+                        <div class="bg-white/80 p-3 md:p-6 rounded-xl shadow-inner">
+                            <p class="text-sm md:text-base text-gray-700 leading-relaxed text-center italic justify-center">
+                                "Amber Joy Layne, aka "The Dancing Comedian," is a versatile entertainer based in South Florida. She captivates audiences with her vibrant distinctive style of physical humor. Layne's two decades of training enables her to seamlessly incorporate her dance skills into her punchlines. Her most notable achievement to date is touring as the opening act for Ilana Glazer of "Broad City", and being on her writing team. Given her bubbly energy as a performer, Amber is often hired to host a variety of events including Bar/Bat Mitzvahs, Weddings, Birthdays, Corporate, Community and Cultural Events, as well as Cabarets, Immersive Experiences and even a Circus."
+                            </p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <div class="mb-8 md:mb-0 ">
+                    <div class="mb-16">
+                  <h3 class="text-2xl md:text-4xl font-bold mb-8 playfair text-black text-center">Featured Performance</h3>
+                  <div class="bg-gray-800 rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-2xl">
+                    <iframe class="w-full h-96" src="https://www.youtube.com/embed/Ge7pYvQ5r2o?start=102" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  </div>
+            </div>
+            
+            <!-- Skills/Talents Grid -->
+        </div> 
+    
+            <div class="flex flex-col md:flex-row">
+               
+                <div class="">
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-xl border border-purple-200 h-full">
+                        <div class="text-center mb-8">
+                            <h3 class="text-3xl md:text-5xl font-bold mb-4 playfair text-black ">Places you’ve seen her</h3>
+                            <p class="text-gray-600 italic">Where Amber has brought laughter to audiences worldwide</p>
+                        </div>
+                        
+                        <!-- International Venues -->
+                        <div class="mb-8 ">
+                            <h4 class="text-lg font-bold mb-4 text-purple-700 flex items-center justify-center">
+                                <span class="text-2xl mr-2">🌍</span> International
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+                                <div class="bg-white/70 p-3 rounded-lg shadow-sm border-l-4 border-purple-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-purple-700">The Comedy Store</span>
+                                    <span class="text-gray-600 text-sm block">Sydney, Australia</span>
+                                </div>
+                                <div class="bg-white/70 p-3 rounded-lg shadow-sm border-l-4 border-purple-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-purple-700">Comics Lounge</span>
+                                    <span class="text-gray-600 text-sm block">Melbourne, Australia</span>
+                                </div>
+                                <div class="bg-white/70 p-3 rounded-lg shadow-sm border-l-4 border-purple-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-purple-700">Ma's Comedy</span>
+                                    <span class="text-gray-600 text-sm block">Berlin, Germany</span>
+                                </div>
+                                <div class="bg-white/70 p-3 rounded-lg shadow-sm border-l-4 border-purple-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-purple-700">Barbes Comedy Club</span>
+                                    <span class="text-gray-600 text-sm block">Paris, France</span>
+                                </div>
+                                <div class="bg-white/70 p-3 rounded-lg shadow-sm border-l-4 border-purple-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-purple-700">Tuga Comedy Club</span>
+                                    <span class="text-gray-600 text-sm block">Bahamas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Major US Cities -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold mb-4 text-pink-700 flex items-center justify-center">
+                                <span class="text-2xl mr-2">🏙️</span> Major US Cities
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">NYC:</span>
+                                    <span class="text-gray-600 text-sm">Stand Up NY, The Grisly Pear, St. Marks, Broadway Comedy Club, Greenwich Comedy Club, The Comedy Shop</span>
+                                </div>
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">LA:</span>
+                                    <span class="text-gray-600 text-sm">Comedy Club, The Comedy Chateau</span>
+                                </div>
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">Chicago:</span>
+                                    <span class="text-gray-600 text-sm">Zanies</span>
+                                </div>
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">Dallas:</span>
+                                    <span class="text-gray-600 text-sm">Hyenas Comedy Club</span>
+                                </div>
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">Las Vegas:</span>
+                                    <span class="text-gray-600 text-sm">Las Vegas Live Comedy Club</span>
+                                </div>
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-pink-400 hover:shadow-md transition-shadow">
+                                    <span class="font-semibold text-pink-700">Denver:</span>
+                                    <span class="text-gray-600 text-sm">The Paramount Theater</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Florida Circuit -->
+                        <div>
+                            <h4 class="text-lg font-bold mb-4 text-orange-700 flex items-center justify-center">
+                                <span class="text-2xl mr-2 text-center">🌴</span> Florida Circuit
+                            </h4>
+                            <div class="grid grid-cols-1 gap-2 items-center">
+                                <div class="bg-white/70 p-2 rounded-lg shadow-sm border-l-4 border-orange-400 hover:shadow-md transition-shadow">
+                                    <span class="text-gray-600 text-sm">Miami Improv • Palm Beach Improv • Ft. Lauderdale Improv • Off the Hook (Naples) • Plaza Live (Orlando) • Tampa Theater • The Sunrise Theater (Ft Pierce)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-xl">
+                                <p class="text-sm text-gray-700 font-medium">✨ Over 25 world-class venues across 4 continents ✨</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                            <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-xl">
+                                <p class="text-lg text-black font-bold">Achievements <br> Florida's Funniest Comedian Top 3 Finalist </p>
+                            </div>
+                        </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 section-gradient">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center playfair">Actress</h2>
+            
+            <!-- Photo Gallery -->
+            <div class="mb-16">
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 playfair text-center text-gray-700 uppercase">Photo Gallery</h3>
+                <div class="gallery-wrap flex flex-row w-full h-[70vh]">
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-2.fna.fbcdn.net/v/t1.15752-9/518143667_717795054218224_66974588273307137_n.png?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Z_hgbZGAQ_oQ7kNvwGzbPDt&_nc_oc=AdkMo4PRxOuQs5gk1iLLkkh4glgDO-su3iR1g6NPPa5JbUssi4KdFYspezXV61zocTc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-2.fna&oh=03_Q7cD2wHtL-iFzQk6gGoguv8rnPM3Rwtnq9ycf5HKuYTJcPwd-A&oe=68999333')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515428850_720943550554276_414111667426824518_n.png?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nw7inzoF_CgQ7kNvwEolzsf&_nc_oc=AdmU9Cmjo8fVEOmDjUWMSnJPRrZkCc20x3I0Qs3lBKXRNS9Lw5fiC9jtfM4Gygve4ns&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wHIeKu2M6j8p52QFsZLxkOyo0yQPB10wKaXoYGh0U2lzQ&oe=689983C5')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl37-1.fna.fbcdn.net/v/t1.15752-9/515378313_1269750404663140_4861939028126229840_n.png?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=bMCZ7QOJJ8MQ7kNvwE2rV92&_nc_oc=AdlQf6ElRPB4UBTnA3u-EnW2XzgNZMyl7l2-c3TwqWhlzNNJzyzREOd7Vupd2mdDK6g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-1.fna&oh=03_Q7cD2wGnpXWEWY244G8UJtD6QcSAv_x90QrQmTVZdxpDRRK7Zw&oe=6899B169')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515916073_1228299332112319_3967400882902066924_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nX5iX6amBCEQ7kNvwH3TUwe&_nc_oc=Adl85Zaa_HjeZbhsrKORp2CLggmUyy4rfPzqpshb21os27bvet9f1OD6amukvAcrKd0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wG8-2pCTdZLe3QC2pKj2iusllZXC5uTUWz5Xzi727iuoQ&oe=68999715')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl37-2.fna.fbcdn.net/v/t1.15752-9/515669035_1406724053989024_6410973826702142659_n.png?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=SOVVHCxSuuQQ7kNvwHjMZ6e&_nc_oc=Adl6g-P_OEgnky-bzLBqqI9fXJjhqRL59GbqFFRJdFYix41YTH1u5NZNGAt7VGr3dpQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-2.fna&oh=03_Q7cD2wFVJZZgbqVHwB7-U_b_8Q6-WiA71eqBsUzdyjLCCPj2Ag&oe=689985EC')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-3.fna.fbcdn.net/v/t1.15752-9/515412952_602537319171541_3211277511549576844_n.png?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=OUL_10MNRSIQ7kNvwEw7_Pm&_nc_oc=AdlXQDT7meEkOvYIn_ivScEPSDXBqSNo1QKpbd-_BM4vONYfdTnLMJNgxOj0RcOrZUc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-3.fna&oh=03_Q7cD2wGtS-qAN2btNxS3MTxJREKpzfki6qQJRvWeIFDwwT3gLQ&oe=6899B3C5')">
+                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex items-center text-white mb-2">
+                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Commercial Reel -->
+            <div class="mb-8 md:mb-0 ">
+                    <div class="mb-16">
+                  <h3 class="text-2xl md:text-4xl font-bold mb-8 playfair text-black text-center">Commercial Reel</h3>
+                  <div class="bg-gray-800 rounded-lg overflow-hidden aspect-w-16 aspect-h-9 shadow-2xl">
+                    <iframe class="w-full h-96" src="https://www.youtube.com/embed/T-Ss5zbTgjQ?start=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  </div>
+            </div>
+            
+            
+          
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl nd:text-5xl font-bold mb-4 text-black text-center playfair">Enerjoy Entertainment </h2>
+
+            <div class="mb-12 text-center max-w-3xl mx-auto">
+                <p class="text-lg text-justify">
+                    Enerjoy Entertainment specializes in concepting, writing, producing, and starring in bold, humor-driven campaigns that cut through the noise and deliver real ROI. Whether it’s a viral social skit, a high-budget commercial, or a punchy tagline that sticks, Amber and her team  brings the comedic timing and creative strategy brands need to connect with audiences and drive engagement.
+
+                </p>
+            </div>
+            
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-teal-400 hover:border-teal-500">
+                    <div class="text-4xl mb-4 text-teal-400 group-hover:text-teal-500 transition-colors duration-300">
+                        <i class="fas fa-lightbulb group-hover:animate-pulse"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-teal-600 transition-colors duration-300">Creative Concept Development</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">From initial brainstorming to fully realized creative concepts, we help bring your ideas to life with fresh perspectives.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-yellow-400 hover:border-yellow-500">
+                    <div class="text-4xl mb-4 text-yellow-400 group-hover:text-yellow-500 transition-colors duration-300">
+                        <i class="fas fa-pen-fancy group-hover:animate-bounce"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-yellow-600 transition-colors duration-300">Scriptwriting & Copywriting</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">Engaging scripts and compelling copy that captures your brand voice and resonates with your audience.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-orange-400 hover:border-orange-500">
+                    <div class="text-4xl mb-4 text-orange-400 group-hover:text-orange-500 transition-colors duration-300">
+                        <i class="fas fa-video group-hover:animate-pulse"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-orange-600 transition-colors duration-300">Video Production & Direction</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">Full-service video production from concept to final edit, ensuring your message comes across clearly and creatively.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-red-400 hover:border-red-500">
+                    <div class="text-4xl mb-4 text-red-400 group-hover:text-red-500 transition-colors duration-300">
+                        <i class="fas fa-theater-masks group-hover:animate-bounce"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-red-600 transition-colors duration-300">On-Camera Performance & Talent</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">Professional on-camera talent for commercials, explainer videos, and branded content.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-teal-400 hover:border-teal-500">
+                    <div class="text-4xl mb-4 text-teal-400 group-hover:text-teal-500 transition-colors duration-300">
+                        <i class="fas fa-hashtag group-hover:animate-pulse"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-teal-600 transition-colors duration-300">Social Content Strategy</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">Developing engaging social media content strategies that grow your audience and strengthen your brand.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group border-l-4 border-yellow-400 hover:border-yellow-500">
+                    <div class="text-4xl mb-4 text-yellow-400 group-hover:text-yellow-500 transition-colors duration-300">
+                        <i class="fas fa-quote-right group-hover:animate-bounce"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 playfair group-hover:text-yellow-600 transition-colors duration-300">Brand Voice & Taglines</h3>
+                    <p class="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">Crafting distinctive brand voices and memorable taglines that make your business stand out.</p>
+                </div>
+            </div>
+            
+            <!-- YouTube Slideshow -->
+            <div class="mt-16">
+                <h3 class="text-2xl md:text-3xl text-black font-bold mb-8 text-center playfair">Featured Work</h3>
+                
+                <div id="videoCarousel" class="relative max-w-4xl mx-auto">
+                    <div class="video-arrow absolute top-1/2 transform -translate-y-1/2 flex w-11 h-11 justify-center items-center rounded-full z-10 text-2xl text-white bg-black bg-opacity-45 cursor-pointer left-0" id="videoPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="video-arrow absolute top-1/2 transform -translate-y-1/2 flex w-11 h-11 justify-center items-center rounded-full z-10 text-2xl text-white bg-black bg-opacity-45 cursor-pointer right-0" id="videoNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    
+                    <div id="video-carousel-vp" class="w-full h-96 flex items-center relative overflow-hidden mx-auto">
+                        <div id="videoCarousel-inner" class="flex absolute transition-all duration-500 ease-in-out left-0 w-full">
+                            <div class="video-carousel-item w-full h-96 flex-shrink-0">
+                                <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/zoSu50wLsJY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <h4 class="text-lg font-semibold playfair text-gray-800">Commercial Reel</h4>
+                                    <p class="text-gray-600 text-sm">Professional commercial work showcase</p>
+                                </div>
+                            </div>
+                            
+                            <div class="video-carousel-item w-full h-96 flex-shrink-0">
+                                <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/HA40MwT4kTo " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <h4 class="text-lg font-semibold playfair text-gray-800">Creative Projects</h4>
+                                    <p class="text-gray-600 text-sm">Innovative creative content and concepts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="video-carousel-item w-full h-96 flex-shrink-0">
+                                <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Ex3CcXaU4No" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <h4 class="text-lg font-semibold playfair text-gray-800">Behind the Scenes</h4>
+                                    <p class="text-gray-600 text-sm">Production process and creative insights</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video indicators -->
+                    <div class="flex justify-center mt-6 space-x-2">
+                        <button class="video-indicator w-3 h-3 rounded-full bg-gray-400 transition-colors duration-300" data-index="0"></button>
+                        <button class="video-indicator w-3 h-3 rounded-full bg-gray-400 transition-colors duration-300" data-index="1"></button>
+                        <button class="video-indicator w-3 h-3 rounded-full bg-gray-400 transition-colors duration-300" data-index="2"></button>
+                    </div>
+                </div>
+                
+                <script>
+                    const videoCarousel = document.getElementById('videoCarousel-inner');
+                    const videoPrevBtn = document.getElementById('videoPrev');
+                    const videoNextBtn = document.getElementById('videoNext');
+                    const videoItems = document.querySelectorAll('.video-carousel-item');
+                    const videoIndicators = document.querySelectorAll('.video-indicator');
+                    
+                    let currentVideoIndex = 0;
+                    const totalVideoItems = videoItems.length;
+                    
+                    function updateVideoCarousel() {
+                        const translateX = -currentVideoIndex * 100;
+                        videoCarousel.style.transform = `translateX(${translateX}%)`;
+                        
+                        // Update indicators
+                        videoIndicators.forEach((indicator, index) => {
+                            if (index === currentVideoIndex) {
+                                indicator.classList.remove('bg-gray-400');
+                                indicator.classList.add('bg-teal-500');
+                            } else {
+                                indicator.classList.remove('bg-teal-500');
+                                indicator.classList.add('bg-gray-400');
+                            }
+                        });
+                    }
+                    
+                    videoNextBtn.addEventListener('click', () => {
+                        currentVideoIndex = (currentVideoIndex + 1) % totalVideoItems;
+                        updateVideoCarousel();
+                    });
+                    
+                    videoPrevBtn.addEventListener('click', () => {
+                        currentVideoIndex = (currentVideoIndex - 1 + totalVideoItems) % totalVideoItems;
+                        updateVideoCarousel();
+                    });
+                    
+                    // Indicator click events
+                    videoIndicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => {
+                            currentVideoIndex = index;
+                            updateVideoCarousel();
+                        });
+                    });
+                    
+                    // Initialize carousel
+                    updateVideoCarousel();
+                    
+                    // Auto-play functionality (optional)
+                    setInterval(() => {
+                        currentVideoIndex = (currentVideoIndex + 1) % totalVideoItems;
+                        updateVideoCarousel();
+                    }, 8000);
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="py-20 section-gradient">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 playfair text-black">Our Trusted Partners</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">We're proud to collaborate with industry-leading brands and organizations</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-blue-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/516012467_1738945486707956_5952352030065453341_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0oaEh1PQJ3oQ7kNvwFt6V8n&_nc_oc=Adn_n2knPP4_ElnLS8x5fE6Z1ZzY8YdcxdIbthmsqWlqPJB0A9OK5pw5o7u7hJRSfqY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wGvUfnCR-pLA8AEtAlMpI-DDh9xEcKwpklQyRC5Wuw7Gg&oe=6899A8B5" alt="Client Logo 1" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+                    
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515900514_1261257608706238_3088399727105615647_n.png?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=16nTCtly04EQ7kNvwGUKGw0&_nc_oc=AdnjqtJzN7NfRitvolPZ7dj5rvX-y6YXTy-0CzBO1yNpcePCR-qSJU6KkCmMV6OzRZ0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wHr8rrcDAB_X8JfVXARYBKEspEyW-ipNxFBxPgXwxtAEQ&oe=6899A8DB" alt="Client Logo 2" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+                    
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl37-2.fna.fbcdn.net/v/t1.15752-9/516040776_1073090041669679_3822450387170254501_n.png?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=ARJ47vhSOZcQ7kNvwGUq20f&_nc_oc=AdkfxSx0yfv3-xxuFserVST3Lzaf2BmbhWqpX72MWdgl5427qTnmykIzSlWaIFnZ1bI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-2.fna&oh=03_Q7cD2wFyaX1qyrnH6Jdrk8UlJezYyKpPqLXep0Ed1eDVh4LBtg&oe=6899A1C4" alt="Client Logo 3" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515450031_2531852980508672_1151999276075387800_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=bQDdmYAuFi0Q7kNvwHFCVCC&_nc_oc=AdlujTok-FRvdSz70g0u4l97VsLCpAiMZiEe15hTdsUugkCowR8TeeQAc4QbJZ0uQWs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wGQUyx0pgXBN2SjVYhB1N3b5a3OCOg1BXK_XIdVo2H_MQ&oe=6899A8D5" alt="Client Logo 4" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl37-1.fna.fbcdn.net/v/t1.15752-9/515918598_2063259814200181_1153778992022953440_n.png?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=86px7HezDH4Q7kNvwEaM5yn&_nc_oc=AdkjhSSD2VK8x3shWfX8LzD_Tng1pnpVzd6jBo4Fr3JmNkeCj7mjj12Neme98EoSdHI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-1.fna&oh=03_Q7cD2wFoQul7YyFuhPUrmU6vYxy5EBFrzR8URhntdWyM0_DxyQ&oe=689999D5" alt="Client Logo 5" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+
+                    <div class="group bg-gray-50 hover:bg-white p-6 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-teal-200">
+                        <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/517359186_1938487906918662_6291508040304231573_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Qme6b75gJj4Q7kNvwG_WPwF&_nc_oc=AdkrF0j5H9CWChAkPcdHKgfzyygMyJeO87Yq6gxOCvZ_TJg7kSqTQT6ODYYk6iy5jBc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wG1SiOgFBCNfgOA64MojlsKAHkU01GtSfAPgZFxaQ52IQ&oe=6899C7CC" alt="Client Logo 6" class="h-16 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                    </div>
+                </div>
+                
+                <!-- Trust indicators -->
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <div class="flex flex-wrap justify-center items-center gap-8 text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-award text-teal-500"></i>
+                            <span class="text-sm font-medium">Award-Winning Creative</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-handshake text-teal-500"></i>
+                            <span class="text-sm font-medium">Trusted Partnerships</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-teal-500"></i>
+                            <span class="text-sm font-medium">5-Star Results</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-globe text-teal-500"></i>
+                            <span class="text-sm font-medium">Global Reach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-4 text-center playfair">Let Me Be Your Star</h2>
+            
+            <div class="max-w-3xl mx-auto text-center mb-2">
+                <div class="bg-white/5 rounded-2xl p-6 mb-8 border border-white/10">
+                            <div class="flex items-center justify-center mb-4">
+                                <i class="fas fa-envelope text-yellow-400 text-2xl mr-3 animate-pulse"></i>
+                                <span class="text-white/60 text-sm uppercase tracking-wider font-medium">Get in Touch</span>
+                            </div>
+                            <a href="mailto:enerjoyentertainment@gmail.com" class="text-xl md:text-2xl font-semibold text-yellow-300 hover:text-yellow-200 transition-all duration-300 hover:scale-105 inline-block">
+                                enerjoyentertainment@gmail.com
+                            </a>
+                        </div>
+                
+                <!-- Social Media Icons -->
+                <div class="flex justify-center items-center space-x-6">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="group  rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                        <i class="fab fa-instagram text-2xl text-white group-hover:text-pink-400 transition-colors duration-300"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="group ounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                        <i class="fab fa-youtube text-2xl text-white group-hover:text-red-500 transition-colors duration-300"></i>
+                    </a>
+                </div>
+                
+                <p class="text-sm text-gray-300 mt-2">Follow me on social media for updates and behind-the-scenes content</p>
+            </div>
+        
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-2 pt-4">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="mb-2 md:mb-0">
+                    <div class="text-2xl font-bold playfair text-center">Amber Joy Layne</div>
+                    <p class="mt-2">The Dancing Comedian</p>
+                </div>  
+                
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-2 text-center">
+                <p>&copy; 2023 Amber Joy Layne. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        // Toggle mobile menu
+        mobileMenuButton.addEventListener('click', function() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Show menu
+                mobileMenu.classList.remove('hidden');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Hide menu
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu on window resize to desktop size
+         window.addEventListener('resize', function() {
+             if (window.innerWidth >= 768) {
+                 mobileMenu.classList.add('hidden');
+                 hamburgerIcon.classList.remove('hidden');
+                 closeIcon.classList.add('hidden');
+                 document.body.style.overflow = 'auto';
+             }
+         });
+         
+         // Video background controls
+         const heroVideo = document.getElementById('hero-video');
+         const videoToggle = document.getElementById('video-toggle');
+         const playIcon = document.getElementById('play-icon');
+         const pauseIcon = document.getElementById('pause-icon');
+         
+         if (heroVideo && videoToggle) {
+             videoToggle.addEventListener('click', function() {
+                 if (heroVideo.paused) {
+                     heroVideo.play();
+                     playIcon.classList.add('hidden');
+                     pauseIcon.classList.remove('hidden');
+                 } else {
+                     heroVideo.pause();
+                     playIcon.classList.remove('hidden');
+                     pauseIcon.classList.add('hidden');
+                 }
+             });
+             
+             // Handle video events
+             heroVideo.addEventListener('play', function() {
+                 playIcon.classList.add('hidden');
+                 pauseIcon.classList.remove('hidden');
+             });
+             
+             heroVideo.addEventListener('pause', function() {
+                 playIcon.classList.remove('hidden');
+                 pauseIcon.classList.add('hidden');
+             });
+             
+             // Fallback: If video fails to load, hide the control button
+             heroVideo.addEventListener('error', function() {
+                 videoToggle.style.display = 'none';
+             });
+         }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
