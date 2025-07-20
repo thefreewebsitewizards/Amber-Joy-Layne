@@ -32,6 +32,365 @@
                 font-size: 1.1rem;
             }
         }
+        
+        /* Gallery Styles */
+        .gallery-container * {
+            box-sizing: border-box;
+        }
+        
+        .gallery-container {
+            font-family: Lato, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .gallery-container img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            transition: transform 1000ms;
+        }
+        
+        .gallery-container ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            max-width: 100%;
+            width: 70rem;
+            justify-content: center;
+        }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .gallery-container {
+                padding: 0.5rem;
+            }
+            
+            .gallery-container ul {
+                grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+                width: 100%;
+                max-width: 100%;
+                gap: 0.75rem;
+                justify-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-container {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .gallery-container ul {
+                display: flex;
+                grid-template-columns: none;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                transition: transform 0.3s ease;
+                gap: 1rem;
+            }
+            
+            .gallery-container li {
+                flex: 0 0 80%;
+                max-width: 80%;
+            }
+            
+            .carousel-nav {
+                display: none;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            .carousel-nav.mobile-active {
+                display: flex;
+            }
+            
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+            
+            .carousel-dot.active {
+                background: rgba(255, 255, 255, 0.8);
+            }
+            
+            /* Swipe Indicator */
+            .swipe-indicator {
+                text-align: center;
+                margin-top: 1rem;
+                padding: 0.5rem;
+            }
+            
+            .swipe-indicator.mobile-active {
+                display: block !important;
+            }
+            
+            .swipe-text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                color: #6b7280;
+                font-size: 0.875rem;
+                font-weight: 500;
+                animation: fadeInUp 0.5s ease-out;
+            }
+            
+            .swipe-icon {
+                font-size: 1.2rem;
+                animation: bounce 2s infinite;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-5px);
+                }
+                60% {
+                    transform: translateY(-3px);
+                }
+            }
+        }
+        
+        /* Image Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: -50px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+            
+            .lightbox-caption {
+                bottom: -60px;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        
+        /* Contact section mobile fixes */
+        @media (max-width: 768px) {
+            #contact .text-xl {
+                font-size: 1.125rem !important;
+                line-height: 1.75rem !important;
+            }
+            
+            #contact .bg-white\/5 {
+                padding: 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            #contact .flex.justify-center.items-center.space-x-6 {
+                gap: 1.5rem !important;
+            }
+            
+            #contact .fab {
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #contact h2 {
+                font-size: 2rem !important;
+                line-height: 2.5rem !important;
+            }
+            
+            #contact .text-xl {
+                font-size: 1rem !important;
+                line-height: 1.5rem !important;
+                word-break: break-all;
+            }
+            
+            #contact .max-w-3xl {
+                max-width: 100% !important;
+                padding: 0 0.5rem !important;
+            }
+        }
+        
+        .gallery-container figure {
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-container figure::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(0, 0, 0, 0.5);
+            transform-origin: center;
+            opacity: 0;
+            transform: scale(2);
+            transition: opacity 300ms;
+        }
+        
+        .gallery-container figcaption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            place-items: center;
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 600ms, transform 600ms;
+        }
+        
+        .gallery-container a:is(:hover, :focus) figure::after {
+            opacity: 1;
+        }
+        
+        .gallery-container a:is(:hover, :focus) figcaption {
+            opacity: 1;
+            transition: opacity 600ms;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .gallery-container figcaption {
+                transform: translate3d(0, 2rem, 0);
+            }
+            
+            .gallery-container figure::after {
+                border-radius: 50%;
+                opacity: 1;
+                transform: scale(0);
+                transition: transform 900ms;
+            }
+            
+            .gallery-container a:is(:hover, :focus) figure::after {
+                transform: scale(2.5);
+            }
+        
+            .gallery-container a:is(:hover, :focus) figcaption {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+                transition: opacity 600ms 400ms, transform 600ms 400ms;
+            }
+        
+            .gallery-container a:is(:hover, :focus) img {
+                transform: scale(1.2);
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -359,47 +718,68 @@
             <!-- Photo Gallery -->
             <div class="mb-16">
                 <h3 class="text-2xl md:text-3xl font-bold mb-8 playfair text-center text-gray-700 uppercase">Photo Gallery</h3>
-                <div class="gallery-wrap flex flex-row w-full h-[70vh]">
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-2.fna.fbcdn.net/v/t1.15752-9/518143667_717795054218224_66974588273307137_n.png?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Z_hgbZGAQ_oQ7kNvwGzbPDt&_nc_oc=AdkMo4PRxOuQs5gk1iLLkkh4glgDO-su3iR1g6NPPa5JbUssi4KdFYspezXV61zocTc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-2.fna&oh=03_Q7cD2wHtL-iFzQk6gGoguv8rnPM3Rwtnq9ycf5HKuYTJcPwd-A&oe=68999333')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
-                        </div>
+                <div class="gallery-container">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl3-2.fna.fbcdn.net/v/t1.15752-9/518143667_717795054218224_66974588273307137_n.png?_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Z_hgbZGAQ_oQ7kNvwGzbPDt&_nc_oc=AdkMo4PRxOuQs5gk1iLLkkh4glgDO-su3iR1g6NPPa5JbUssi4KdFYspezXV61zocTc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-2.fna&oh=03_Q7cD2wHtL-iFzQk6gGoguv8rnPM3Rwtnq9ycf5HKuYTJcPwd-A&oe=68999333" alt="Amber Joy Layne Photo 1">
+                                    <figcaption>Professional Headshot</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515428850_720943550554276_414111667426824518_n.png?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nw7inzoF_CgQ7kNvwEolzsf&_nc_oc=AdmU9Cmjo8fVEOmDjUWMSnJPRrZkCc20x3I0Qs3lBKXRNS9Lw5fiC9jtfM4Gygve4ns&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wHIeKu2M6j8p52QFsZLxkOyo0yQPB10wKaXoYGh0U2lzQ&oe=689983C5" alt="Amber Joy Layne Photo 2">
+                                    <figcaption>Performance Shot</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl37-1.fna.fbcdn.net/v/t1.15752-9/515378313_1269750404663140_4861939028126229840_n.png?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=bMCZ7QOJJ8MQ7kNvwE2rV92&_nc_oc=AdlQf6ElRPB4UBTnA3u-EnW2XzgNZMyl7l2-c3TwqWhlzNNJzyzREOd7Vupd2mdDK6g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-1.fna&oh=03_Q7cD2wGnpXWEWY244G8UJtD6QcSAv_x90QrQmTVZdxpDRRK7Zw&oe=6899B169" alt="Amber Joy Layne Photo 3">
+                                    <figcaption>Behind the Scenes</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515916073_1228299332112319_3967400882902066924_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nX5iX6amBCEQ7kNvwH3TUwe&_nc_oc=Adl85Zaa_HjeZbhsrKORp2CLggmUyy4rfPzqpshb21os27bvet9f1OD6amukvAcrKd0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wG8-2pCTdZLe3QC2pKj2iusllZXC5uTUWz5Xzi727iuoQ&oe=68999715" alt="Amber Joy Layne Photo 4">
+                                    <figcaption>Comedy Performance</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl37-2.fna.fbcdn.net/v/t1.15752-9/515669035_1406724053989024_6410973826702142659_n.png?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=SOVVHCxSuuQQ7kNvwHjMZ6e&_nc_oc=Adl6g-P_OEgnky-bzLBqqI9fXJjhqRL59GbqFFRJdFYix41YTH1u5NZNGAt7VGr3dpQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-2.fna&oh=03_Q7cD2wFVJZZgbqVHwB7-U_b_8Q6-WiA71eqBsUzdyjLCCPj2Ag&oe=689985EC" alt="Amber Joy Layne Photo 5">
+                                    <figcaption>Dance Performance</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img src="https://scontent.fmnl3-3.fna.fbcdn.net/v/t1.15752-9/515412952_602537319171541_3211277511549576844_n.png?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=OUL_10MNRSIQ7kNvwEw7_Pm&_nc_oc=AdlXQDT7meEkOvYIn_ivScEPSDXBqSNo1QKpbd-_BM4vONYfdTnLMJNgxOj0RcOrZUc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-3.fna&oh=03_Q7cD2wGtS-qAN2btNxS3MTxJREKpzfki6qQJRvWeIFDwwT3gLQ&oe=6899B3C5" alt="Amber Joy Layne Photo 6">
+                                    <figcaption>Portrait Session</figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="carousel-nav" id="carouselNav" style="display: none;">
+                        <span class="carousel-dot active" data-slide="0"></span>
+                        <span class="carousel-dot" data-slide="1"></span>
+                        <span class="carousel-dot" data-slide="2"></span>
+                        <span class="carousel-dot" data-slide="3"></span>
+                        <span class="carousel-dot" data-slide="4"></span>
+                        <span class="carousel-dot" data-slide="5"></span>
                     </div>
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515428850_720943550554276_414111667426824518_n.png?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nw7inzoF_CgQ7kNvwEolzsf&_nc_oc=AdmU9Cmjo8fVEOmDjUWMSnJPRrZkCc20x3I0Qs3lBKXRNS9Lw5fiC9jtfM4Gygve4ns&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wHIeKu2M6j8p52QFsZLxkOyo0yQPB10wKaXoYGh0U2lzQ&oe=689983C5')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl37-1.fna.fbcdn.net/v/t1.15752-9/515378313_1269750404663140_4861939028126229840_n.png?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=bMCZ7QOJJ8MQ7kNvwE2rV92&_nc_oc=AdlQf6ElRPB4UBTnA3u-EnW2XzgNZMyl7l2-c3TwqWhlzNNJzyzREOd7Vupd2mdDK6g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-1.fna&oh=03_Q7cD2wGnpXWEWY244G8UJtD6QcSAv_x90QrQmTVZdxpDRRK7Zw&oe=6899B169')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/515916073_1228299332112319_3967400882902066924_n.png?_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=nX5iX6amBCEQ7kNvwH3TUwe&_nc_oc=Adl85Zaa_HjeZbhsrKORp2CLggmUyy4rfPzqpshb21os27bvet9f1OD6amukvAcrKd0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD2wG8-2pCTdZLe3QC2pKj2iusllZXC5uTUWz5Xzi727iuoQ&oe=68999715')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl37-2.fna.fbcdn.net/v/t1.15752-9/515669035_1406724053989024_6410973826702142659_n.png?_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=SOVVHCxSuuQQ7kNvwHjMZ6e&_nc_oc=Adl6g-P_OEgnky-bzLBqqI9fXJjhqRL59GbqFFRJdFYix41YTH1u5NZNGAt7VGr3dpQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl37-2.fna&oh=03_Q7cD2wFVJZZgbqVHwB7-U_b_8Q6-WiA71eqBsUzdyjLCCPj2Ag&oe=689985EC')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item flex-1 h-full bg-center bg-cover bg-no-repeat transition-all duration-700 ease-in-out hover:flex-[7] relative group" style="background-image: url('https://scontent.fmnl3-3.fna.fbcdn.net/v/t1.15752-9/515412952_602537319171541_3211277511549576844_n.png?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=OUL_10MNRSIQ7kNvwEw7_Pm&_nc_oc=AdlXQDT7meEkOvYIn_ivScEPSDXBqSNo1QKpbd-_BM4vONYfdTnLMJNgxOj0RcOrZUc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl3-3.fna&oh=03_Q7cD2wGtS-qAN2btNxS3MTxJREKpzfki6qQJRvWeIFDwwT3gLQ&oe=6899B3C5')">
-                        <div class="absolute bottom-0 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex items-center text-white mb-2">
-                                <i class="fab fa-instagram text-pink-400 text-2xl"></i>
-                            </div>
+                    <div class="swipe-indicator" id="swipeIndicator" style="display: none;">
+                        <div class="swipe-text">
+                            <span class="swipe-icon">👆</span>
                         </div>
                     </div>
                 </div>
@@ -419,6 +799,15 @@
           
         </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
 
     <!-- What We Do Section -->
     <section id="services" class="py-20 bg-gray-100">
@@ -799,19 +1188,163 @@
              });
          }
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        // Smooth scrolling for navigation links
+         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+             anchor.addEventListener('click', function (e) {
+                 e.preventDefault();
+                 const target = document.querySelector(this.getAttribute('href'));
+                 if (target) {
+                     target.scrollIntoView({
+                         behavior: 'smooth',
+                         block: 'start'
+                     });
+                 }
+             });
+         });
+         
+         // Mobile Gallery Carousel
+         function initMobileGalleryCarousel() {
+             if (window.innerWidth <= 480) {
+                 const galleryContainer = document.querySelector('.gallery-container ul');
+                 const carouselNav = document.getElementById('carouselNav');
+                 const swipeIndicator = document.getElementById('swipeIndicator');
+                 const carouselDots = document.querySelectorAll('.carousel-dot');
+                 const galleryItems = document.querySelectorAll('.gallery-container li');
+                 
+                 if (galleryContainer && carouselNav) {
+                     carouselNav.classList.add('mobile-active');
+                     if (swipeIndicator) {
+                         swipeIndicator.classList.add('mobile-active');
+                     }
+                     
+                     let currentSlide = 0;
+                     const totalSlides = galleryItems.length;
+                     
+                     function updateCarousel() {
+                         const translateX = -currentSlide * 85; // 80% width + 1rem gap
+                         galleryContainer.style.transform = `translateX(${translateX}%)`;
+                         
+                         // Update dots
+                         carouselDots.forEach((dot, index) => {
+                             dot.classList.toggle('active', index === currentSlide);
+                         });
+                     }
+                     
+                     // Dot navigation
+                     carouselDots.forEach((dot, index) => {
+                         dot.addEventListener('click', () => {
+                             currentSlide = index;
+                             updateCarousel();
+                         });
+                     });
+                     
+                     // Touch/swipe support
+                     let startX = 0;
+                     let isDragging = false;
+                     
+                     galleryContainer.addEventListener('touchstart', (e) => {
+                         startX = e.touches[0].clientX;
+                         isDragging = true;
+                     });
+                     
+                     galleryContainer.addEventListener('touchmove', (e) => {
+                         if (!isDragging) return;
+                         e.preventDefault();
+                     });
+                     
+                     galleryContainer.addEventListener('touchend', (e) => {
+                         if (!isDragging) return;
+                         isDragging = false;
+                         
+                         const endX = e.changedTouches[0].clientX;
+                         const diffX = startX - endX;
+                         
+                         if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                             if (diffX > 0 && currentSlide < totalSlides - 1) {
+                                 currentSlide++;
+                             } else if (diffX < 0 && currentSlide > 0) {
+                                 currentSlide--;
+                             }
+                             updateCarousel();
+                         }
+                     });
+                     
+                     updateCarousel();
+                 }
+             } else {
+                 // Hide carousel nav and swipe indicator on desktop
+                 const carouselNav = document.getElementById('carouselNav');
+                 const swipeIndicator = document.getElementById('swipeIndicator');
+                 if (carouselNav) {
+                     carouselNav.classList.remove('mobile-active');
+                 }
+                 if (swipeIndicator) {
+                     swipeIndicator.classList.remove('mobile-active');
+                 }
+             }
+         }
+         
+         // Initialize on load and resize
+         window.addEventListener('load', initMobileGalleryCarousel);
+         window.addEventListener('resize', initMobileGalleryCarousel);
+         
+         // Image Lightbox Functionality
+         function initImageLightbox() {
+             const lightbox = document.getElementById('lightbox');
+             const lightboxImage = document.getElementById('lightboxImage');
+             const lightboxCaption = document.getElementById('lightboxCaption');
+             const lightboxClose = document.getElementById('lightboxClose');
+             const galleryLinks = document.querySelectorAll('.gallery-container a');
+             
+             // Add click event to all gallery links
+             galleryLinks.forEach(link => {
+                 link.style.cursor = 'pointer';
+                 link.addEventListener('click', (e) => {
+                     e.preventDefault();
+                     const img = link.querySelector('img');
+                     if (img) {
+                         openLightbox(img.src, img.alt);
+                     }
+                 });
+             });
+             
+             function openLightbox(imageSrc, imageAlt) {
+                 lightboxImage.src = imageSrc;
+                 lightboxImage.alt = imageAlt;
+                 lightboxCaption.textContent = imageAlt;
+                 lightbox.classList.add('active');
+                 document.body.style.overflow = 'hidden';
+             }
+             
+             function closeLightbox() {
+                 lightbox.classList.remove('active');
+                 document.body.style.overflow = 'auto';
+                 setTimeout(() => {
+                     lightboxImage.src = '';
+                     lightboxCaption.textContent = '';
+                 }, 300);
+             }
+             
+             // Close button click
+             lightboxClose.addEventListener('click', closeLightbox);
+             
+             // Click outside image to close
+             lightbox.addEventListener('click', (e) => {
+                 if (e.target === lightbox) {
+                     closeLightbox();
+                 }
+             });
+             
+             // Escape key to close
+             document.addEventListener('keydown', (e) => {
+                 if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                     closeLightbox();
+                 }
+             });
+         }
+         
+         // Initialize lightbox on page load
+         window.addEventListener('load', initImageLightbox);
     </script>
 </body>
 </html>
