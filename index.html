@@ -89,29 +89,20 @@
             }
             
             .gallery-container ul {
-                display: flex;
-                grid-template-columns: none;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
                 max-width: none;
                 margin: 0;
                 padding: 0;
-                transition: transform 0.3s ease;
-                gap: 1rem;
             }
             
             .gallery-container li {
-                flex: 0 0 80%;
-                max-width: 80%;
+                list-style: none;
             }
             
             .carousel-nav {
                 display: none;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-            
-            .carousel-nav.mobile-active {
-                display: flex;
             }
             
             .carousel-dot {
@@ -129,13 +120,7 @@
             
             /* Swipe Indicator */
             .swipe-indicator {
-                text-align: center;
-                margin-top: 1rem;
-                padding: 0.5rem;
-            }
-            
-            .swipe-indicator.mobile-active {
-                display: block !important;
+                display: none;
             }
             
             .swipe-text {
@@ -717,7 +702,8 @@
             
             <!-- Photo Gallery -->
             <div class="mb-16">
-                <h3 class="text-2xl md:text-3xl font-bold mb-8 playfair text-center text-gray-700 uppercase">Photo Gallery</h3>
+                <h3 class="text-2xl md:text-3xl font-bold mb-2 playfair text-center text-gray-700 uppercase">Photo Gallery</h3>
+                <h3 class="text-md md:text-xl font-bold playfair text-center text-gray-700 uppercase">Tap to view</h3>
                 <div class="gallery-container">
                     <ul>
                         <li>
@@ -1202,91 +1188,7 @@
              });
          });
          
-         // Mobile Gallery Carousel
-         function initMobileGalleryCarousel() {
-             if (window.innerWidth <= 480) {
-                 const galleryContainer = document.querySelector('.gallery-container ul');
-                 const carouselNav = document.getElementById('carouselNav');
-                 const swipeIndicator = document.getElementById('swipeIndicator');
-                 const carouselDots = document.querySelectorAll('.carousel-dot');
-                 const galleryItems = document.querySelectorAll('.gallery-container li');
-                 
-                 if (galleryContainer && carouselNav) {
-                     carouselNav.classList.add('mobile-active');
-                     if (swipeIndicator) {
-                         swipeIndicator.classList.add('mobile-active');
-                     }
-                     
-                     let currentSlide = 0;
-                     const totalSlides = galleryItems.length;
-                     
-                     function updateCarousel() {
-                         const translateX = -currentSlide * 85; // 80% width + 1rem gap
-                         galleryContainer.style.transform = `translateX(${translateX}%)`;
-                         
-                         // Update dots
-                         carouselDots.forEach((dot, index) => {
-                             dot.classList.toggle('active', index === currentSlide);
-                         });
-                     }
-                     
-                     // Dot navigation
-                     carouselDots.forEach((dot, index) => {
-                         dot.addEventListener('click', () => {
-                             currentSlide = index;
-                             updateCarousel();
-                         });
-                     });
-                     
-                     // Touch/swipe support
-                     let startX = 0;
-                     let isDragging = false;
-                     
-                     galleryContainer.addEventListener('touchstart', (e) => {
-                         startX = e.touches[0].clientX;
-                         isDragging = true;
-                     });
-                     
-                     galleryContainer.addEventListener('touchmove', (e) => {
-                         if (!isDragging) return;
-                         e.preventDefault();
-                     });
-                     
-                     galleryContainer.addEventListener('touchend', (e) => {
-                         if (!isDragging) return;
-                         isDragging = false;
-                         
-                         const endX = e.changedTouches[0].clientX;
-                         const diffX = startX - endX;
-                         
-                         if (Math.abs(diffX) > 50) { // Minimum swipe distance
-                             if (diffX > 0 && currentSlide < totalSlides - 1) {
-                                 currentSlide++;
-                             } else if (diffX < 0 && currentSlide > 0) {
-                                 currentSlide--;
-                             }
-                             updateCarousel();
-                         }
-                     });
-                     
-                     updateCarousel();
-                 }
-             } else {
-                 // Hide carousel nav and swipe indicator on desktop
-                 const carouselNav = document.getElementById('carouselNav');
-                 const swipeIndicator = document.getElementById('swipeIndicator');
-                 if (carouselNav) {
-                     carouselNav.classList.remove('mobile-active');
-                 }
-                 if (swipeIndicator) {
-                     swipeIndicator.classList.remove('mobile-active');
-                 }
-             }
-         }
-         
-         // Initialize on load and resize
-         window.addEventListener('load', initMobileGalleryCarousel);
-         window.addEventListener('resize', initMobileGalleryCarousel);
+         // Mobile Gallery - No carousel needed, using grid layout like desktop
          
          // Image Lightbox Functionality
          function initImageLightbox() {
